@@ -45,8 +45,16 @@
             self.nativeExpressAd.delegate = nil;
             self.nativeExpressAd = nil;
         }
+        
         MUNativeExpressConfig *config = [[MUNativeExpressConfig alloc] init];
-        config.adSize = size;
+        if (size.height == 0) {
+            CGFloat aspectRatio = 9.0 / 16.0;
+            CGFloat height = size.width * aspectRatio;
+            config.adSize = CGSizeMake(size.width, height);
+        } else {
+            config.adSize = size;
+        }
+        
         config.slotId = slotID;
         config.materialFillMode = MentaNativeExpressAdMaterialFillMode_ScaleAspectFill;
         config.viewController = self.bridge.viewControllerForPresentingModalView;// 必须设置, 用于内部presentvc
