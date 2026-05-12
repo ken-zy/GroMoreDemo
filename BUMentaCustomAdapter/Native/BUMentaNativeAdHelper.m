@@ -87,11 +87,11 @@
     return self.data.nativeAdView.mentaMediaView;
 }
 
-- (BUMMediatedNativeAdMode)imageMode {
+- (BUFeedADMode)imageMode {
     if (self.data.dataObject.isVideo) {
-        return BUMMediatedNativeAdModePortraitVideo;
+        return BUFeedVideoAdModePortrait;
     } else {
-        return BUMMediatedNativeAdModeLargeImage;
+        return BUFeedADModeLargeImage;
     }
 }
 
